@@ -10,6 +10,6 @@ RUN apt-get update
 RUN docker-php-ext-install intl
 RUN docker-php-ext-configure intl
 RUN a2enmod rewrite
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-png \
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 RUN service apache2 restart

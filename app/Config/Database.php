@@ -32,9 +32,9 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => '172.18.0.2',
-        'username' => 'root',
-        'password' => '123456789',
+        'hostname' => '172.21.0.2',
+        'username' => 'udjango',
+        'password' => 'd64lira',
         'database' => 'bd_customer',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',

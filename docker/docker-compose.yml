@@ -27,7 +27,7 @@ services:
             - php
     php:
         container_name: php-codeigniter4
-        image: nanoninja/php-fpm:7.4
+        image: nanoninja/php-fpm:php:7.4.10-fpm
         restart: always
         volumes:
             - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"

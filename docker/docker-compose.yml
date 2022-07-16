@@ -1,13 +1,37 @@
 version: '3.8'
 services:
-    ci4-web:
-        build:
-            context: ./php
-        # command: php spark serve
+    proxy:
+        container_name: proxy-codeigniter4
+        image: jwilder/nginx-proxy
         ports:
-            - 80:80
+            - "10:80"
+            - "443:443"
         volumes:
-            - .:/var/www/html/
+          - /var/run/docker.sock:/tmp/docker.sock:ro
+
+    app:
+        container_name: app-codeigniter4
+        image: nginx:alpine
+        volumes:
+            - "./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf"
+            - "./etc/ssl:/etc/ssl"
+            - "./web:/var/www/html"
+            - "./etc/nginx/default.template.conf:/etc/nginx/conf.d/default.template"
+    
+        ports:
+            - "8080:80"    
+
+        command: /bin/sh -c "envsubst '$$NGINX_HOST' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+        restart: always
+        depends_on:
+            - php
+    php:
+        container_name: php-codeigniter4
+        image: nanoninja/php-fpm:7.4
+        restart: always
+        volumes:
+            - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
+            - "./web:/var/www/html"
 networks:
   default:
     external:

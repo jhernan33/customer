@@ -1,9 +1,9 @@
-version: '3'
+version: '3.8'
 services:
     ci4-web:
         build:
             context: ./php
-            command: php spark serve
+        command: php spark serve
         ports:
             - 80:80
         volumes:

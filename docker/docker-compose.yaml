@@ -5,10 +5,10 @@ services:
             context: .
             dockerfile: docker/apache/Dockerfile
             args:
-                uid: ${UID}
+                uid: 1000
         environment:
-            - APACHE_RUN_USER=#${UID}
-            - APACHE_RUN_GROUP=#${UID}
+            - APACHE_RUN_USER=#1000
+            - APACHE_RUN_GROUP=#1000
         restart: unless-stopped
         volumes: 
             - ./src:/var/www/html

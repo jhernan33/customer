@@ -15,11 +15,11 @@ services:
             - ./apache_log:/var/log/apache2
         ports:
             - 80:80
-    # adminer:
-    #     image: adminer
-    #     restart: unless-stopped
-    #     ports:
-    #         - 80:80
+    adminer:
+        image: adminer
+        restart: unless-stopped
+        ports:
+            - 80:80
 
 networks:
   default:

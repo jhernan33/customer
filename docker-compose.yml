@@ -11,7 +11,7 @@ services:
             - APACHE_RUN_GROUP=#1000
         restart: unless-stopped
         volumes: 
-            - ./src:/var/www/html
+            - ./app:/var/www/html
             - ./apache_log:/var/log/apache2
         ports:
             - 80:80

@@ -42,6 +42,7 @@ RUN composer self-update
 
 COPY app/. /var/www/html/
 COPY spark /var/www/html/
+COPY public/. /var/www/html/
 # 6. we need a user with the same UID/GID with host user
 # so when we execute CLI commands, all the host file's ownership remains intact
 # otherwise command from inside container will create root-owned files and directories

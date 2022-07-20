@@ -41,9 +41,9 @@ RUN chmod +x /usr/local/bin/composer
 RUN composer self-update
 
 RUN cd /var/www/html
-RUN composer create-project codeigniter4/appstarter codeigniter4 -s rc
-RUN ls
-RUN chmod -R 0777 /var/www/html/codeigniter4/writable
+RUN composer create-project codeigniter4/appstarter codeigniter4
+RUN mv appstarter restapi
+RUN chmod -R 0777 /var/www/html/restapi/writable
 
 RUN apt-get clean \
     && rm -r /var/lib/apt/lists/*

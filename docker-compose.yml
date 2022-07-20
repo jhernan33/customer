@@ -14,7 +14,7 @@ services:
             - ./app:/var/www/html
             - ./apache_log:/var/log/apache2
         ports:
-            - 80:80
+            - 8080:8080
     adminer:
         image: adminer
         restart: unless-stopped
